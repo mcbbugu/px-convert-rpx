@@ -6,3 +6,5 @@
 
 安装后，在文件夹上右键选择相应操作，在打开的文件中，右键选择相应操作。
 可在插件设置中修改设计稿宽度。
+
+https://github.com/mcbbugu/px-convert-rpx
