@@ -1,0 +1,105 @@
+{
+  "name": "px-convert-rpx",
+  "displayName": "px-convert-rpx",
+  "publisher": "bugu",
+  "homepage": "https://www.mcbbugu.com",
+  "description": ".css 和 .vue 文件中，px 和 rpx的相互转换",
+  "version": "0.0.1",
+  "icon": "./images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/my-awesome-extension.git"
+  },
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Developer Tools",
+    "Productivity",
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "px-convert-rpx",
+      "properties": {
+        "pxtotorpx.designWidth": {
+          "type": "number",
+          "default": 428,
+          "description": "The width of your design in pixels."
+        }
+      }
+    },
+    "commands": [{
+      "command": "extension.convertSelectedPxToRpx",
+      "title": "px to rpx",
+      "when": "editorHasSelection"
+    },{
+      "command": "extension.convertSelectedRpxToPx",
+      "title": "rpx to px",
+      "when": "editorHasSelection"
+    },{
+      "command": "extension.convertPxToRpxInFolder",
+      "title": "Convert all files in the folder px to rpx"
+    },{
+      "command": "extension.convertRpxToPxInFolder",
+      "title": "Convert all files in the folder rpx to px"
+    }],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.convertSelectedPxToRpx",
+          "when": "resourceLangId == 'vue' || resourceLangId == 'css'",
+          "title": "px to rpx"
+        },
+        {
+          "command": "extension.convertSelectedRpxToPx",
+          "when": "resourceLangId == 'vue' || resourceLangId == 'css'",
+          "title": "rpx to px"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "extension.convertSelectedPxToRpx",
+          "group": "5_translate",
+          "when": "resourceLangId == 'vue' || resourceLangId == 'css'",
+          "title": "px to rpx"
+        },
+        {
+          "command": "extension.convertSelectedRpxToPx",
+          "group": "5_translate",
+          "when": "resourceLangId == 'vue' || resourceLangId == 'css'",
+          "title": "rpx to px"
+        },{
+          "command": "extension.convertPxToRpxInFolder",
+          "group": "5_translate",
+          "when": "resourceScheme == 'file' && resourceExtname == ''",
+          "title": "Convert all files in the folder px to rpx"
+        },{
+          "command": "extension.convertRpxToPxInFolder",
+          "group": "5_translate",
+          "when": "resourceScheme == 'file' && resourceExtname == ''",
+          "title": "Convert all files in the folder rpx to px"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.77.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
