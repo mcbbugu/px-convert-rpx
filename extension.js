@@ -132,10 +132,11 @@ function activate(context) {
 			const vuePattern = '**/*.vue';
 
 			const cssFiles = await vscode.workspace.findFiles(cssPattern, folderPath);
-			const filteredCssFiles = cssFiles.filter(fileUri => !fileUri.path.includes('node_modules'));
-
 			const vueFiles = await vscode.workspace.findFiles(vuePattern, folderPath);
-			const filteredVueFiles = vueFiles.filter(fileUri => !fileUri.path.includes('node_modules'));
+			const filteredCssFiles = cssFiles.filter(fileUri => !fileUri.path.includes('node_modules') &&
+			!fileUri.path.includes('dist') && !fileUri.path.includes('wxcomponents'));
+			const filteredVueFiles = vueFiles.filter(fileUri => !fileUri.path.includes('node_modules') &&
+			!fileUri.path.includes('dist') && !fileUri.path.includes('wxcomponents'));
 
 			const filesToConvert = [...filteredCssFiles, ...filteredVueFiles];
 			for (const file of filesToConvert) {
