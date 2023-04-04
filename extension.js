@@ -128,8 +128,8 @@ function activate(context) {
 
 	async function convertFolder(folderPath, type) {
 		try {
-			const cssPattern = '**/src/**/*.css';
-			const vuePattern = '**/src/**/*.vue';
+			const cssPattern = '**/*.css';
+			const vuePattern = '**/*.vue';
 
 			const cssFiles = await vscode.workspace.findFiles(cssPattern, folderPath);
 			const filteredCssFiles = cssFiles.filter(fileUri => !fileUri.path.includes('node_modules'));
