@@ -1,5 +1,6 @@
 const { log } = require('console');
 const vscode = require('vscode');
+const fs = require('fs');
 
 function activate(context) {
 
@@ -128,27 +129,30 @@ function activate(context) {
 
 	async function convertFolder(folderPath, type) {
 		try {
-			const cssPattern = '**/*.css';
-			const vuePattern = '**/*.vue';
+			const extensions = ['css', 'vue', 'wxss', 'wxml', 'html', 'js'];
 
-			const cssFiles = await vscode.workspace.findFiles(cssPattern, folderPath);
-			const vueFiles = await vscode.workspace.findFiles(vuePattern, folderPath);
-			const filteredCssFiles = cssFiles.filter(fileUri => !fileUri.path.includes('node_modules') &&
-			!fileUri.path.includes('dist') && !fileUri.path.includes('wxcomponents'));
-			const filteredVueFiles = vueFiles.filter(fileUri => !fileUri.path.includes('node_modules') &&
-			!fileUri.path.includes('dist') && !fileUri.path.includes('wxcomponents'));
+			const filePattern = `**/*.{${extensions.join(',')}}`;
 
-			const filesToConvert = [...filteredCssFiles, ...filteredVueFiles];
-			for (const file of filesToConvert) {
+			const files = await vscode.workspace.findFiles(filePattern, {
+				base: folderPath,
+				include: `${folderPath}/**`,
+			});
+
+			const result = files.filter(file => file.path.startsWith(folderPath));
+			console.log(result, "result");
+
+			for (const file of result) {
 				const document = await vscode.workspace.openTextDocument(file);
 				await convertDocument(document, type);
 			}
+
 			vscode.window.showInformationMessage(`文件夹下的所有文件中 px 单位已经成功转换为 rpx 单位。`);
 		} catch (error) {
 			console.error(error);
 			vscode.window.showErrorMessage(`转换过程中发生错误：${error.message}`);
 		}
 	}
+
 
 	async function convertDocument(document, type) {
 		const originalContent = document.getText();

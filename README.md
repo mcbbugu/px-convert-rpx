@@ -1,10 +1,10 @@
-# pxtotorpx README
+# px-convert-rpx 简介
 
-.css 和 .vue 文件中，px 和 rpx的相互转换，支持整个文件夹的转换。
+'css', 'vue', 'wxss', 'wxml', 'html', 'js' 文件中，px 和 rpx的相互转换，支持整个文件夹的转换。
 
-## Features
+## 操作
 
 安装后，在文件夹上右键选择相应操作，在打开的文件中，右键选择相应操作。
 可在插件设置中修改设计稿宽度。
 
-https://github.com/mcbbugu/px-convert-rpx
+![Example GIF](/images/test.gif)
