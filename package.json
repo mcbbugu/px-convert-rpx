@@ -4,8 +4,8 @@
   "publisher": "bugu",
   "homepage": "https://www.mcbbugu.com",
   "description": "px 和 rpx 的相互转换，文件夹一键完成",
-  "version": "0.0.1",
-  "icon": "./images/icon.png",
+  "version": "0.0.2",
+  "icon": "images/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/mcbbugu/px-convert-rpx"
@@ -14,8 +14,6 @@
     "vscode": "^1.77.0"
   },
   "categories": [
-    "Developer Tools",
-    "Productivity",
     "Other"
   ],
   "activationEvents": [],
