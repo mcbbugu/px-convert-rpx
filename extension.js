@@ -131,7 +131,7 @@ function activate(context) {
 
 	async function convertFolder(folderPath, type) {
 		try {
-			const extensions = ['css', 'vue', 'wxss', 'wxml', 'html', 'js'];
+			const extensions = ['css', 'vue', 'wxss', 'wxml', 'html', 'js', 'php', 'jsx'];
 
 			const filePattern = `**/*.{${extensions.join(',')}}`;
 
