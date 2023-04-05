@@ -25,6 +25,7 @@ function activate(context) {
 			textEditor.edit(edit => {
 				edit.replace(selection, textWithRpx);
 			});
+			vscode.window.showInformationMessage(`px 单位已经成功转换为 rpx 单位。`);
 		}
 	});
 
@@ -52,6 +53,7 @@ function activate(context) {
 				edit.replace(selection, textWithPx);
 			});
 		}
+		vscode.window.showInformationMessage(`rpx 单位已经成功转换为 px 单位。`);
 	});
 
 	context.subscriptions.push(disposable);
@@ -146,7 +148,11 @@ function activate(context) {
 				await convertDocument(document, type);
 			}
 
-			vscode.window.showInformationMessage(`文件夹下的所有文件中 px 单位已经成功转换为 rpx 单位。`);
+			if(type == 1){
+				vscode.window.showInformationMessage(`文件夹下的所有文件中 px 单位已经成功转换为 rpx 单位。`);
+			}else{
+				vscode.window.showInformationMessage(`文件夹下的所有文件中 rpx 单位已经成功转换为 px 单位。`);
+			}
 		} catch (error) {
 			console.error(error);
 			vscode.window.showErrorMessage(`转换过程中发生错误：${error.message}`);

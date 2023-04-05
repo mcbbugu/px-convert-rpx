@@ -3,7 +3,7 @@
   "displayName": "px-convert-rpx",
   "publisher": "bugu",
   "homepage": "https://www.mcbbugu.com",
-  "description": ".css 和 .vue 文件中，px 和 rpx的相互转换",
+  "description": "px 和 rpx 的相互转换，文件夹一键完成",
   "version": "0.0.1",
   "icon": "./images/icon.png",
   "repository": {
@@ -51,12 +51,10 @@
       "editor/context": [
         {
           "command": "extension.convertSelectedPxToRpx",
-          "when": "resourceLangId == 'vue' || resourceLangId == 'css'",
           "title": "px to rpx"
         },
         {
           "command": "extension.convertSelectedRpxToPx",
-          "when": "resourceLangId == 'vue' || resourceLangId == 'css'",
           "title": "rpx to px"
         }
       ],
@@ -64,13 +62,13 @@
         {
           "command": "extension.convertSelectedPxToRpx",
           "group": "5_translate",
-          "when": "resourceLangId == 'vue' || resourceLangId == 'css'",
+          "when": "resourceScheme != ''",
           "title": "px to rpx"
         },
         {
           "command": "extension.convertSelectedRpxToPx",
           "group": "5_translate",
-          "when": "resourceLangId == 'vue' || resourceLangId == 'css'",
+          "when": "resourceScheme != ''",
           "title": "rpx to px"
         },{
           "command": "extension.convertPxToRpxInFolder",
