@@ -1,6 +1,6 @@
 # px-convert-rpx 简介
 
-'css', 'vue', 'wxss', 'wxml', 'html', 'js' 文件中，px 和 rpx的相互转换，支持整个文件夹的转换。
+'css', 'vue', 'wxss', 'wxml', 'html', 'js' 文件中，px 和 rpx 的相互转换，文件夹一键完成。
 
 ## 操作
 
